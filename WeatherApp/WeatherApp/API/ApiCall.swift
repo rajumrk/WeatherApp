@@ -2,7 +2,7 @@
 //  ApiCall.swift
 //  weather
 //
-//  Created by Ramakrishna Raju M on 4/21/21.
+//  Created by Ramakrishna Raju M on 4/24/21.
 //
 
 import Foundation
@@ -43,32 +43,6 @@ struct Response: Codable {
     
 }
 
-struct Weather: Codable {
-    let clouds: Clouds
-    let main: Main
-    let weather: [WeatherInfo]
-}
-
-struct Clouds: Codable {
-    let all: Int
-}
-
-struct Main: Codable {
-    let feels_like: Float
-    let temp: Float
-    let humidity: Float
-}
-
-struct WeatherInfo: Codable {
-    let description: String
-    let main: String
-    let desc: String?
-    init(description: String, main: String) {
-        self.description = description
-        self.main = main
-        self.desc = description
-    }
-}
 struct Constants  {
     static let apiKey = "65d00499677e59496ca2f318eb68c049"
 }

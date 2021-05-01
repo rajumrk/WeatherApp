@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  WeatherApp
 //
-//  Created by Ramakrishna Raju M on 4/21/21.
+//  Created by Ramakrishna Raju M on 4/24/21.
 //
 
 import UIKit
@@ -22,8 +22,8 @@ class ViewController: UIViewController {
                 guard let listView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "WeatherListViewController") as? WeatherListViewController else {
                     return
                 }
+                listView.title = self.cityTextField.text
                 listView.viewModel.weatherArray = response
-                listView.viewModel.CityName = self.cityTextField.text?.capitalized ?? "City"
                 self.navigationController?.pushViewController(listView, animated: true)
             }
         }

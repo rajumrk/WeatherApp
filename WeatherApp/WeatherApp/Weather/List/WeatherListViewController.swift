@@ -2,7 +2,7 @@
 //  WeatherListViewController.swift
 //  WeatherApp
 //
-//  Created by Ramakrishna Raju M on 4/21/21.
+//  Created by Ramakrishna Raju M on 4/24/21.
 //
 
 import UIKit
@@ -12,10 +12,9 @@ class WeatherListViewController: UIViewController {
     @IBOutlet weak var weatherTableView: UITableView!
 
     let viewModel = WeatherViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = self.viewModel.CityName
-        // Do any additional setup after loading the view.
     }
     
 }
@@ -38,10 +37,11 @@ extension WeatherListViewController: UITableViewDataSource {
 
 extension WeatherListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard let detailView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "WeatherDetailsViewController") as? WeatherDetailsViewController else {
             return
         }
-        detailView.weatherObject = viewModel.weatherArray[indexPath.row]
+        detailView.viewModel.weatherObject = viewModel.weatherArray[indexPath.row]
         self.navigationController?.pushViewController(detailView, animated: true)
     }
 }
